@@ -1,0 +1,13 @@
+{% extends 'layout_t.html' %}
+
+{% block context %}
+    <div class="alert alert-light" role="alert">
+        <div style="height: 100px"></div>
+        <h3>
+            <p align="center">
+                {{ request.session.info.name }}教师,欢迎登录！
+            </p>
+        </h3>
+        <div style="height: 200px"></div>
+    </div>
+{% endblock %}

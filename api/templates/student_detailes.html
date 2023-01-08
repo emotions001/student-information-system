@@ -1,0 +1,159 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block css %}
+    <style>
+        body {
+            background-color: #f8f9fb;
+            position: relative;
+        }
+        div.button-self {
+            position: absolute;
+            top: 874px;
+            right: 50px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block context %}
+
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="{% static 'img/person-lines-fill.svg' %}" alt="" width="72"
+                     height="57">
+                <h2>{{ title }}</h2>
+                <p class="lead">公告：请保护个人及公民隐私。</p>
+            </div>
+
+            <div class="row g-5 justify-content-center">
+                <div class="col-md-7 col-lg-8">
+                    <form class="needs-validation" novalidate="" method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">姓名</label>
+                                <div>
+                                    {{ form.student_name }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-sm-6">#}
+{#                                <label for="firstName" class="form-label">姓名</label>#}
+{#                                {{ form.student_name }}#}
+{#                                <span style="color: red;">{{ form.errors.0 }}</span>#}
+{#                            </div>#}
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">学号</label>
+                                <div>
+                                    {{ form.student_number }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-sm-6">#}
+{#                                <label for="firstName" class="form-label">学号</label>#}
+{#                                {{ form.student_number }}#}
+{#                                <span style="color: red;">{{ form.errors.0 }}</span>#}
+{#                            </div>#}
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">性别</label>
+                                <div>
+                                    {{ form.student_gender }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-sm-6">#}
+{#                                <label for="firstName" class="form-label">性别</label>#}
+{#                                {{ form.student_gender }}#}
+{#                                <span style="color: red;">{{ form.errors.0 }}</span>#}
+{#                            </div>#}
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">出生年月</label>
+                                <div>
+                                    {{ form.student_birth }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-sm-6">#}
+{#                                <label for="firstName" class="form-label">出生年月</label>#}
+{#                                {{ form.student_birth }}#}
+{#                                <span style="color: red;">{{ form.errors.0 }}</span>#}
+{#                            </div>#}
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">所属院系</label>
+                                <div>
+                                    {{ form.student_depart }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-sm-12">#}
+{#                                <label for="firstName" class="form-label">所属院系</label>#}
+{#                                {{ form.student_depart }}#}
+{#                                <span style="color: red;">{{ form.errors.0 }}</span>#}
+{#                            </div>#}
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">所学专业</label>
+                                <div>
+                                    {{ form.student_major }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-sm-12">#}
+{#                                <label for="firstName" class="form-label">所学专业</label>#}
+{#                                {{ form.student_major }}#}
+{#                                <span style="color: red;">{{ form.errors.0 }}</span>#}
+{#                            </div>#}
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">所属班级</label>
+                                <div>
+                                    {{ form.student_class }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-12">#}
+{#                                <label for="address" class="form-label">所属班级</label>#}
+{#                                {{ form.student_class }}#}
+{#                            </div>#}
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">总学分</label>
+                                <div>
+                                    {{ form.student_scores }}
+                                </div>
+                            </div>
+
+{#                            <div class="col-md-3">#}
+{#                                <label for="zip" class="form-label">总学分</label>#}
+{#                                {{ form.student_scores }}#}
+{#                            </div>#}
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="row g-1 justify-content-end">
+                            <div class="col-sm-3">
+                                <button class="btn btn-warning" type="submit">提交保存</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-sm-3 button-self">
+                        <a href="/student/list/"><button class="btn btn-primary">&nbsp;返回&nbsp;</button></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div style="height: 150px"></div>
+
+    </div>
+
+{% endblock %}

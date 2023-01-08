@@ -1,0 +1,47 @@
+{% extends 'layout_t.html' %}
+{% load static %}
+
+
+{% block css %}
+    <style>
+        body {
+            background-color: #f8f9fb;
+        }
+    </style>
+{% endblock %}
+
+
+{% block context %}
+
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="{% static 'img/person-lines-fill.svg' %}" alt="" width="72"
+                     height="57">
+                <h2>{{ title }}</h2>
+            </div>
+
+            <div class="row g-5 justify-content-center">
+                <div class="col-md-7 col-lg-6">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="col-sm-12">
+                                <label>{{ field.label }}</label>
+                                {{ field }}
+                                <span style="color: red;">{{ field.errors.0 }}</span>
+                            </div>
+                            <span>&nbsp;</span>
+                        {% endfor %}
+                        <hr class="my-4">
+                        <button type="submit" class="btn btn-primary">提 交</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <div style="height: 150px"></div>
+
+    </div>
+
+{% endblock %}

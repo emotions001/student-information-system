@@ -1,0 +1,75 @@
+{% extends 'layout_t.html'  %}
+
+{% block context %}
+<div class="container">
+    <div style="margin-bottom: 10px; margin-top: 20px;">
+        <a class="btn btn-success" href="/t-student/add/">
+            <svg class="bi bi-bookmark-plus" fill="currentColor" height="16" viewBox="0 0 16 16"
+                 width="16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+            </svg>
+            添加学生
+        </a>
+
+        <div style="float: right;width: 300px;">
+            <div class="container-fluid">
+                <form class="d-flex" role="search" method="get">
+                    <input class="form-control me-2" name="query" type="search" placeholder="学号" value="{{ search_data }}" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <svg class="bi bi-list-ul" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                      fill-rule="evenodd"/>
+            </svg>
+            学生列表
+        </div>
+
+        <!-- Table -->
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>学号</th>
+                <th>专业</th>
+                <th>姓名</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for obj in queryset %}
+            <tr>
+                <th>{{ obj.student_number }}</th>
+                <td>{{ obj.student_major }}</td>
+                <th>{{ obj.student_name }}</th>
+                <td>{{ obj.student_class }}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="/t-student/{{ obj.id }}/detailes/">详细信息</a>
+                    <a class="btn btn-danger btn-xs" href="/t-student/{{ obj.id }}/delete/">删除</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="height: 150px"></div>
+
+    <ul class="pagination">
+        {{ page_string }}
+    </ul>
+
+</div>
+
+{% endblock %}

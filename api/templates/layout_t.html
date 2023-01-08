@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息管理系统</title>
+    <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/favicon/favicon.ico' %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <div class="heat">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+          <div class="container">
+            <a class="navbar-brand" href="/teacher/index/">学生信息管理系统</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+{#                <li class="nav-item">#}
+{#                  <a class="nav-link" href="/depart/list/">院系管理</a>#}
+{#                </li>#}
+                  <li class="nav-item">
+                      <a class="nav-link" href="/t-student/list/">学生信息管理</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/t-teacher/{{ request.session.info.id }}/self/">教师个人信息管理</a>
+                  </li>
+{#                <li class="nav-item">#}
+{#                  <a class="nav-link" href="/teacher/list/">教师信息管理</a>#}
+{#                </li>#}
+              </ul>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ request.session.info.name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="/t-teacher/{{ request.session.info.id }}/self/">我的信息</a></li>
+                                <li><a class="dropdown-item" href="/t-teacher/{{ request.session.info.id }}/reset/">重置密码</a></li>
+                                <li><a class="dropdown-item" href="/logout/">注销</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </nav>
+    </div>
+
+
+
+{% block context %}
+{% endblock %}
+
+
+    <div class="foot">
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-muted">© 2022 Copyright, Tim</p>
+
+                <a href="/"
+                   class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+
+                <ul class="nav col-md-4 justify-content-end">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>
